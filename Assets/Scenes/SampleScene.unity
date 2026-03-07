@@ -505,9 +505,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomCirclePos
   numberOfPositions: 5
-  radius: 3
-  randomCirclePos: []
+  radius: 10
   posPrefab: {fileID: 6858485675055293493, guid: dfeeff9e84333cb46bbb24d53b628a0b, type: 3}
+  workerPrefab: {fileID: 8753619993042729485, guid: ba26fc55af9967842acf417f94365875, type: 3}
 --- !u!4 &2083565724
 Transform:
   m_ObjectHideFlags: 0

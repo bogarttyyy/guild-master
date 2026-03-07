@@ -1,17 +1,16 @@
-using System;
 using System.Collections.Generic;
-using NSBLib.Helpers;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Random = UnityEngine.Random;
 
 
 public class RandomCirclePos : MonoBehaviour
 {
     [SerializeField] private int numberOfPositions = 1;
     [SerializeField] private float radius = 5f;
-    [SerializeField] private List<GameObject> randomCirclePos;
     [SerializeField] private GameObject posPrefab;
+    [SerializeField] private Worker workerPrefab;
+    
+    private List<GameObject> randomCirclePos;
     
     private void Start()
     {
@@ -24,19 +23,30 @@ public class RandomCirclePos : MonoBehaviour
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
             GenerateRandomPos();
+            GenerateUnit();
+        }
+    }
+
+    private void GenerateUnit()
+    {
+        var count = randomCirclePos.Count;
+
+        foreach (var pos in randomCirclePos)
+        {
+            workerPrefab.destPos = pos.transform.position;
+            Instantiate(workerPrefab, Vector2.zero, Quaternion.identity);
         }
     }
 
     private void GenerateRandomPos()
     {
         ClearPos();
+
+        var posList = RandomCirclePosGenerator.GeneratePositions(numberOfPositions, radius);
         
-        for (int i = 0; i < numberOfPositions; i++)
-        {
-            var newPos = RandomPointCircle(radius);
-            randomCirclePos.Add(Instantiate(posPrefab, newPos, Quaternion.identity));
-            NSBLogger.Log("RandomCirclePos: " + newPos);
-        }
+        foreach (var pos in posList)
+            randomCirclePos.Add(Instantiate(posPrefab, pos, Quaternion.identity));
+        
     }
 
     private void ClearPos()
@@ -46,15 +56,5 @@ public class RandomCirclePos : MonoBehaviour
             randomCirclePos.ForEach(Destroy);
             randomCirclePos.Clear();
         }
-    }
-
-    public static Vector2 RandomPointCircle(float radius)
-    {
-        var angle = Random.Range(0f, Mathf.PI * 2f);
-
-        var x = Mathf.Cos(angle) * radius;
-        var y = Mathf.Sin(angle) * radius;
-        
-        return new Vector2(x, y);
     }
 }
