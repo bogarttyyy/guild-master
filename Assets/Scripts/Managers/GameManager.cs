@@ -1,13 +1,17 @@
+using NSBLib.EventChannelSystem;
 using NSBLib.Helpers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private int cash = 0;
+
+    [SerializeField] private EventChannel<int> updateCashText;
+    
+    private void Start()
     {
-        
+        updateCashText.Invoke(cash);
     }
 
     // Update is called once per frame
@@ -17,5 +21,11 @@ public class GameManager : MonoBehaviour
         {
             NSBLogger.Log("R was pressed");
         }
+    }
+
+    public void AddCash(int amount)
+    {
+        cash += amount;
+        updateCashText.Invoke(cash);
     }
 }
