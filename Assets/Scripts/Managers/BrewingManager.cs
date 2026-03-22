@@ -2,6 +2,7 @@ using System;
 using NSBLib.EventChannelSystem;
 using NSBLib.Helpers;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BrewingManager : MonoBehaviour
 {
@@ -40,6 +41,18 @@ public class BrewingManager : MonoBehaviour
         grindAmount = 0;
         heatAmount = 0;
         pourAmount = 0;
+    }
+
+    private void Update()
+    {
+        if (Keyboard.current.digit1Key.wasPressedThisFrame)
+            SetBean(0);
+        if (Keyboard.current.digit2Key.wasPressedThisFrame)
+            SetGrind(0);
+        if (Keyboard.current.digit3Key.wasPressedThisFrame)
+            SetHeat(0);
+        if (Keyboard.current.digit4Key.wasPressedThisFrame)
+            SetPour(0);
     }
 
     public void ResetAll()
