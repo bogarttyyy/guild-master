@@ -94,7 +94,15 @@ public class BrewingManager : MonoBehaviour
 
     public void IsGrindBtnPressed(bool isPressed)
     {
-        isGrindingBeans = isPressed;
+        if (beanAmount > 0)
+        {
+            // SetBean(0);
+            isGrindingBeans = isPressed;
+        }
+        else
+        {
+            NSBLogger.Log("Must have beans to grind!");
+        }
     }
 
     public void IsHeadBtnPressed(bool isPressed)
