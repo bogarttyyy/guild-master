@@ -2232,6 +2232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   cash: 0
+  reset: {fileID: 11400000, guid: 6be16c94b822239448f943c07c845c02, type: 2}
   updateCashText: {fileID: 11400000, guid: 63288de6566aaac45a61a744c79de1ed, type: 2}
 --- !u!4 &2030396454
 Transform:
@@ -2432,6 +2433,7 @@ GameObject:
   - component: {fileID: 2080446306}
   - component: {fileID: 2080446305}
   - component: {fileID: 2080446304}
+  - component: {fileID: 2080446307}
   m_Layer: 0
   m_Name: BrewingManager
   m_TagString: Untagged
@@ -2591,6 +2593,34 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: BrewingManager, Assembly-CSharp
         m_MethodName: IsGrindBtnPressed
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2080446307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2080446300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18871bf798cb43088f7565ca8c7cd9cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NSBLib.EventChannelSystem.EventListener
+  eventChannel: {fileID: 11400000, guid: 6be16c94b822239448f943c07c845c02, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2080446302}
+        m_TargetAssemblyTypeName: BrewingManager, Assembly-CSharp
+        m_MethodName: ResetAll
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

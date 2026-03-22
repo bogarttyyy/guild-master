@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private int cash = 0;
 
+    [SerializeField] private EventChannel reset;
     [SerializeField] private EventChannel<int> updateCashText;
     
     private void Start()
@@ -19,7 +20,7 @@ public class GameManager : MonoBehaviour
     {
         if (Keyboard.current.rKey.wasPressedThisFrame)
         {
-            NSBLogger.Log("R was pressed");
+            reset.Invoke(new Empty());
         }
     }
 

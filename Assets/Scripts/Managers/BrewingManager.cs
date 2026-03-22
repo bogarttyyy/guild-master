@@ -42,6 +42,38 @@ public class BrewingManager : MonoBehaviour
         pourAmount = 0;
     }
 
+    public void ResetAll()
+    {
+        SetBean(0);
+        SetGrind(0);
+        SetHeat(0);
+        SetPour(0);
+    }
+
+    public void SetBean(float value)
+    {
+        beanAmount = value;
+        updateBeanValueText.Invoke(value);
+    }
+    
+    public void SetGrind(float value)
+    {
+        grindAmount = value;
+        updateGrindValueText.Invoke(value);
+    }
+    
+    public void SetHeat(float value)
+    {
+        heatAmount = value;
+        updateHeatValueText.Invoke(value);
+    }
+    
+    public void SetPour(float value)
+    {
+        pourAmount = value;
+        updatePourValueText.Invoke(value);
+    }
+
     public void IsBeansBtnPressed(bool isPressed)
     {
         isGettingBeans = isPressed;
