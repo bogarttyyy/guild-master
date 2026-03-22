@@ -1,4 +1,5 @@
 using System;
+using Enums;
 using NSBLib.EventChannelSystem;
 using NSBLib.Helpers;
 using UnityEngine;
@@ -6,14 +7,17 @@ using UnityEngine.InputSystem;
 
 public class BrewingManager : MonoBehaviour
 {
-    [Header("Values")]
+    [Header("Coffee")]
+    [SerializeField] private ECupSize selectedCupSize;
     [SerializeField] private float beanAmount;
-    [SerializeField] private float beanMax = 10f;
     [SerializeField] private float grindAmount;
-    [SerializeField] private float grindMax = 100f;
     [SerializeField] private float heatAmount;
-    [SerializeField] private float heatMax = 100f;
     [SerializeField] private float pourAmount;
+    
+    [Header("Values")]
+    [SerializeField] private float beanMax = 10f;
+    [SerializeField] private float grindMax = 100f;
+    [SerializeField] private float heatMax = 100f;
     [SerializeField] private float pourMax = 12f;
     
     [Header("Rate")]
@@ -53,6 +57,11 @@ public class BrewingManager : MonoBehaviour
             SetHeat(0);
         if (Keyboard.current.digit4Key.wasPressedThisFrame)
             SetPour(0);
+    }
+
+    public void SelectCupSize(int size)
+    {
+        selectedCupSize = (ECupSize)size;
     }
 
     public void ResetAll()
