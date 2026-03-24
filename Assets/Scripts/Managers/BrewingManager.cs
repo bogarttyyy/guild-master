@@ -38,6 +38,8 @@ public class BrewingManager : MonoBehaviour
     [SerializeField] private EventChannel<float> updateGrindValueText;
     [SerializeField] private EventChannel<float> updateHeatValueText;
     [SerializeField] private EventChannel<float> updatePourValueText;
+    
+    [SerializeField] private EventChannel resetCupSelection;
 
     private void Start()
     {
@@ -50,13 +52,20 @@ public class BrewingManager : MonoBehaviour
     private void Update()
     {
         if (Keyboard.current.digit1Key.wasPressedThisFrame)
-            SetBean(0);
+            ResetCup();
         if (Keyboard.current.digit2Key.wasPressedThisFrame)
-            SetGrind(0);
+            SetBean(0);
         if (Keyboard.current.digit3Key.wasPressedThisFrame)
-            SetHeat(0);
+            SetGrind(0);
+            // SetHeat(0);
         if (Keyboard.current.digit4Key.wasPressedThisFrame)
             SetPour(0);
+    }
+
+    private void ResetCup()
+    {
+        selectedCupSize = ECupSize.None;
+        resetCupSelection.Invoke(new Empty());
     }
 
     public void SelectCupSize(int size)
