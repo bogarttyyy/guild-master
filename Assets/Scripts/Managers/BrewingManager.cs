@@ -75,30 +75,47 @@ public class BrewingManager : MonoBehaviour
 
     public void ResetAll()
     {
+        ResetCup();
         SetBean(0);
         SetGrind(0);
         SetHeat(0);
         SetPour(0);
     }
 
+    /// <summary>
+    /// Set the amount of beans in the cup. S = 8g, M = 12g, L = 16g
+    /// </summary>
+    /// <param name="value"></param>
     public void SetBean(float value)
     {
         beanAmount = value;
         updateBeanValueText.Invoke(value);
     }
     
+    /// <summary>
+    /// Grind beans from coarse to extra fine.
+    /// </summary>
+    /// <param name="value"></param>
     public void SetGrind(float value)
     {
         grindAmount = value;
         updateGrindValueText.Invoke(value);
     }
     
+    /// <summary>
+    /// Heat water to boil.
+    /// </summary>
+    /// <param name="value"></param>
     public void SetHeat(float value)
     {
         heatAmount = value;
         updateHeatValueText.Invoke(value);
     }
     
+    /// <summary>
+    /// Pour water depending on the cup size.
+    /// </summary>
+    /// <param name="value"></param>
     public void SetPour(float value)
     {
         pourAmount = value;

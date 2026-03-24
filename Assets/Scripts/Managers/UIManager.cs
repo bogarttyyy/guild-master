@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text cashText;
+    [SerializeField] private TMP_Text orderText;
     [SerializeField] private TMP_Text beanValueText;
     [SerializeField] private TMP_Text grindValueText;
     [SerializeField] private TMP_Text heatValueText;
@@ -19,6 +20,11 @@ public class UIManager : MonoBehaviour
     public void UpdateCashText(int cash)
     {
         cashText.text = $"${cash}";
+    }
+
+    public void UpdateOrderText(string order)
+    {
+        orderText.text = $"{order}";
     }
 
     public void UpdateBeanValueText(float value)
