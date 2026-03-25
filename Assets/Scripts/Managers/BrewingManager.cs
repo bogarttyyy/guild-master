@@ -40,6 +40,8 @@ public class BrewingManager : MonoBehaviour
     [SerializeField] private EventChannel<float> updatePourValueText;
     
     [SerializeField] private EventChannel resetCupSelection;
+    [SerializeField] private EventChannel resetUI;
+    [SerializeField] private EventChannel<string> disableBtn;
 
     private void Start()
     {
@@ -75,11 +77,12 @@ public class BrewingManager : MonoBehaviour
 
     public void ResetAll()
     {
-        ResetCup();
         SetBean(0);
         SetGrind(0);
         SetHeat(0);
         SetPour(0);
+        ResetCup();
+        resetUI.Invoke(new Empty());
     }
 
     /// <summary>
@@ -133,6 +136,7 @@ public class BrewingManager : MonoBehaviour
         {
             // SetBean(0);
             isGrindingBeans = isPressed;
+            disableBtn.Invoke("beanBtn");
         }
         else
         {
@@ -147,7 +151,15 @@ public class BrewingManager : MonoBehaviour
 
     public void IsPourBtnPressed(bool isPressed)
     {
-        isPouringWater = isPressed;
+        if (grindAmount > 0)
+        {
+            disableBtn.Invoke("grindBtn");
+            isPouringWater = isPressed;
+        }
+        else
+        {
+            NSBLogger.Log("Must have ground beans to pour!");
+        }
     }
 
     private void FixedUpdate()

@@ -17,6 +17,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button mCupBtn;
     [SerializeField] private Button lCupBtn;
 
+    [SerializeField] private Button beanBtn;
+    [SerializeField] private Button grindBtn;
+
     public void UpdateCashText(int cash)
     {
         cashText.text = $"${cash}";
@@ -70,5 +73,28 @@ public class UIManager : MonoBehaviour
                 break;
         }
         NSBLogger.Log($"Cup Size Selected: {(ECupSize)size}");
+    }
+
+    public void DisableButton(string btnId)
+    {
+        switch (btnId)
+        {
+            case "beanBtn":
+                beanBtn.interactable = false;
+                break;
+            case "grindBtn":
+                grindBtn.interactable = false;
+                break;
+            
+        }
+    }
+
+    public void ResetUI()
+    {
+        UpdateOrderText("");
+        beanBtn.interactable = true;
+        sCupBtn.interactable = true;
+        mCupBtn.interactable = true;
+        lCupBtn.interactable = true;
     }
 }

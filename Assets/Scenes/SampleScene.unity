@@ -2150,6 +2150,8 @@ GameObject:
   - component: {fileID: 1250139261}
   - component: {fileID: 1250139260}
   - component: {fileID: 1250139267}
+  - component: {fileID: 1250139269}
+  - component: {fileID: 1250139268}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -2178,6 +2180,8 @@ MonoBehaviour:
   sCupBtn: {fileID: 486825734}
   mCupBtn: {fileID: 2097260955}
   lCupBtn: {fileID: 1544222684}
+  beanBtn: {fileID: 2046603911}
+  grindBtn: {fileID: 2092685192}
 --- !u!114 &1250139260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2380,6 +2384,62 @@ MonoBehaviour:
       - m_Target: {fileID: 1250139259}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
         m_MethodName: UpdateOrderText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1250139268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250139258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18871bf798cb43088f7565ca8c7cd9cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NSBLib.EventChannelSystem.EventListener
+  eventChannel: {fileID: 11400000, guid: 8d3d56b589378e443a9a205999a482f6, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1250139259}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ResetUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1250139269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250139258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403869002edc4514a028aaa9fea7b83f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NSBLib.EventChannelSystem.StringEventListener
+  eventChannel: {fileID: 11400000, guid: f3d40c04e6bda9c47ad50820442af6a6, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1250139259}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: DisableButton
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3487,6 +3547,8 @@ MonoBehaviour:
   updateHeatValueText: {fileID: 11400000, guid: c6f9d6ecb1c7a58468ffeeb55874b534, type: 2}
   updatePourValueText: {fileID: 11400000, guid: 3af5aa7b34f45294f899bbb0ad38c25a, type: 2}
   resetCupSelection: {fileID: 11400000, guid: e58a6835aae91db4aadf6b510a855ace, type: 2}
+  resetUI: {fileID: 11400000, guid: 8d3d56b589378e443a9a205999a482f6, type: 2}
+  disableBtn: {fileID: 11400000, guid: f3d40c04e6bda9c47ad50820442af6a6, type: 2}
 --- !u!4 &2080446303
 Transform:
   m_ObjectHideFlags: 0
