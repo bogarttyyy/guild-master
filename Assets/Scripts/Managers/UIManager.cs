@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text grindValueText;
     [SerializeField] private TMP_Text heatValueText;
     [SerializeField] private TMP_Text pourValueText;
+    [SerializeField] private TMP_Text waterValueText;
+    [SerializeField] private TMP_Text funnelValueText;
 
     [SerializeField] private Button sCupBtn;
     [SerializeField] private Button mCupBtn;
@@ -48,6 +50,16 @@ public class UIManager : MonoBehaviour
     public void UpdatePourValueText(float value)
     {
         pourValueText.text = $"{value:F1} oz";
+    }
+
+    public void UpdateWaterValueText(float value)
+    {
+        waterValueText.text = $"{value:F1} oz";
+    }
+
+    public void UpdateFunnelValueText(float value)
+    {
+        funnelValueText.text = $"{value:F1}";
     }
     
     public void CupSizeSelected(int size)

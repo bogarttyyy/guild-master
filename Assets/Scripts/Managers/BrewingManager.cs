@@ -1,4 +1,3 @@
-using System;
 using Enums;
 using NSBLib.EventChannelSystem;
 using NSBLib.Helpers;
@@ -13,12 +12,16 @@ public class BrewingManager : MonoBehaviour
     [SerializeField] private float grindAmount;
     [SerializeField] private float heatAmount;
     [SerializeField] private float pourAmount;
+    [SerializeField] private float waterAmount;
+    [SerializeField] private float funnelAmount;
     
     [Header("Values")]
     [SerializeField] private float beanMax = 10f;
     [SerializeField] private float grindMax = 100f;
     [SerializeField] private float heatMax = 100f;
     [SerializeField] private float pourMax = 12f;
+    [SerializeField] private float waterMax;
+    [SerializeField] private float funnelMax = 8f;
     
     [Header("Rate")]
     [SerializeField] private float beanAmountPerSecond;
@@ -26,8 +29,10 @@ public class BrewingManager : MonoBehaviour
     [SerializeField] private float heatAmountPerSecond;
     [SerializeField] private float coolingAmountPerSecond;
     [SerializeField] private float pourAmountPerSecond;
+    [SerializeField] private float waterAmountPerSecond;
+    [SerializeField] private float funnelAmountPerSecond;
 
-    [Header("Active")]
+    [Header("Active?")]
     [SerializeField] private bool isGettingBeans;
     [SerializeField] private bool isGrindingBeans;
     [SerializeField] private bool isHeatingWater;
@@ -38,6 +43,8 @@ public class BrewingManager : MonoBehaviour
     [SerializeField] private EventChannel<float> updateGrindValueText;
     [SerializeField] private EventChannel<float> updateHeatValueText;
     [SerializeField] private EventChannel<float> updatePourValueText;
+    [SerializeField] private EventChannel<float> updateWaterValueText;
+    [SerializeField] private EventChannel<float> updateFunnelValueText;
     
     [SerializeField] private EventChannel resetCupSelection;
     [SerializeField] private EventChannel resetUI;
@@ -49,6 +56,8 @@ public class BrewingManager : MonoBehaviour
         grindAmount = 0;
         heatAmount = 0;
         pourAmount = 0;
+        waterAmount = 0;
+        funnelAmount = 0;
     }
 
     private void Update()
@@ -62,6 +71,10 @@ public class BrewingManager : MonoBehaviour
             // SetHeat(0);
         if (Keyboard.current.digit4Key.wasPressedThisFrame)
             SetPour(0);
+        if (Keyboard.current.digit5Key.wasPressedThisFrame)
+            SetWater(0);
+        if (Keyboard.current.digit6Key.wasPressedThisFrame)
+            SetFunnel(0);
     }
 
     private void ResetCup()
@@ -125,6 +138,18 @@ public class BrewingManager : MonoBehaviour
         updatePourValueText.Invoke(value);
     }
 
+    public void SetWater(float value)
+    {
+        waterAmount = value;
+        updateWaterValueText.Invoke(value);
+    }
+    
+    public void SetFunnel(float value)
+    {
+        funnelAmount = value;
+        updateFunnelValueText.Invoke(value);
+    }
+
     public void IsBeansBtnPressed(bool isPressed)
     {
         isGettingBeans = isPressed;
@@ -168,6 +193,18 @@ public class BrewingManager : MonoBehaviour
         GrindBeans();
         HeatWater();
         PourWater();
+        Funneling();
+    }
+
+    private void Funneling()
+    {
+        if (funnelAmount < funnelMax && funnelAmount > 0)
+        {
+            funnelAmount -= funnelAmountPerSecond * Time.deltaTime;
+            waterAmount += funnelAmountPerSecond * Time.deltaTime;
+        }
+        updateFunnelValueText?.Invoke(funnelAmount/funnelMax*100f);
+        updateWaterValueText?.Invoke(waterAmount);
     }
 
     private void PourWater()
@@ -175,6 +212,7 @@ public class BrewingManager : MonoBehaviour
         if (isPouringWater && pourAmount < pourMax)
         {
             pourAmount += pourAmountPerSecond * Time.deltaTime;
+            funnelAmount += pourAmountPerSecond * Time.deltaTime;
         }
         updatePourValueText?.Invoke(pourAmount);
     }

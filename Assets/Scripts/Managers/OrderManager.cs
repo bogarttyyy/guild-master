@@ -18,6 +18,7 @@ public class OrderManager : MonoBehaviour
     {
         orderText = "";
         UpdateOrderText.Invoke(orderText);
+        GenerateOrder();
     }
     
     private void Update()
