@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Enums;
 using Models;
 using NSBLib.EventChannelSystem;
@@ -9,7 +10,8 @@ using Random = UnityEngine.Random;
 public class OrderManager : MonoBehaviour
 {
     [Header("Order")]
-    [SerializeField] private string orderText;
+    [SerializeField] private string orderText; 
+    private List<Order> orders;
     
     [Header("Events")]
     [SerializeField] private EventChannel<string> UpdateOrderText;
@@ -18,6 +20,7 @@ public class OrderManager : MonoBehaviour
     {
         orderText = "";
         UpdateOrderText.Invoke(orderText);
+        orders = new List<Order>();
         // GenerateOrder();
     }
 
@@ -40,7 +43,7 @@ public class OrderManager : MonoBehaviour
         NSBLogger.Log(orderText);
     }
 
-    private void GenerateOrderV2()
+    public void GenerateOrderV2()
     {
         var newOrder = new Order()
         {
@@ -51,6 +54,7 @@ public class OrderManager : MonoBehaviour
 
         var icedText = newOrder.isIced ? "Iced " : "";
         newOrder.orderText = $"{newOrder.cupSize} {icedText}{newOrder.drinkType}";
+        orders.Add(newOrder);        
         UpdateOrderText.Invoke(newOrder.orderText);
         NSBLogger.Log(newOrder.orderText);
     }
