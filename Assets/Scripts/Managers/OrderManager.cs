@@ -10,16 +10,20 @@ using Random = UnityEngine.Random;
 public class OrderManager : MonoBehaviour
 {
     [Header("Order")]
-    [SerializeField] private string orderText; 
+    [SerializeField] private string orderText;
+    [SerializeField] private string orderListText;
+    
     private List<Order> orders;
     
     [Header("Events")]
     [SerializeField] private EventChannel<string> UpdateOrderText;
+    [SerializeField] private EventChannel<string> UpdateOrderListText;
     
     private void Start()
     {
         orderText = "";
         UpdateOrderText.Invoke(orderText);
+        UpdateOrderListText.Invoke("");
         orders = new List<Order>();
         // GenerateOrder();
     }
@@ -30,9 +34,22 @@ public class OrderManager : MonoBehaviour
         {
             GenerateOrder();
         }
-        
+
         if (Keyboard.current.zKey.wasPressedThisFrame)
-            GenerateOrderV2();
+            PrintOrders();
+    }
+
+    private void PrintOrders()
+    {
+        // NSBLogger.Log("Printing orders");
+        // foreach (var order in orders)
+        //     NSBLogger.Log(order.orderText);
+        orderListText = "";
+        foreach (var order in orders)
+        {
+            orderListText += $"{order.orderText}\n";
+        }
+        UpdateOrderListText.Invoke(orderListText);
     }
 
     private void GenerateOrder()
@@ -54,8 +71,14 @@ public class OrderManager : MonoBehaviour
 
         var icedText = newOrder.isIced ? "Iced " : "";
         newOrder.orderText = $"{newOrder.cupSize} {icedText}{newOrder.drinkType}";
-        orders.Add(newOrder);        
+        AddOrder(newOrder);
         UpdateOrderText.Invoke(newOrder.orderText);
         NSBLogger.Log(newOrder.orderText);
+    }
+
+    public void AddOrder(Order newOrder)
+    {
+        orders.Add(newOrder);
+        PrintOrders();
     }
 }

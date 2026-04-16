@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text cashText;
     [SerializeField] private TMP_Text orderText;
+    [SerializeField] private TMP_Text orderListText;
     [SerializeField] private TMP_Text beanValueText;
     [SerializeField] private TMP_Text grindValueText;
     [SerializeField] private TMP_Text heatValueText;
@@ -60,6 +61,11 @@ public class UIManager : MonoBehaviour
     public void UpdateFunnelValueText(float value)
     {
         funnelValueText.text = $"{value:F1}";
+    }
+
+    public void UpdateOrderListText(string orderList)
+    {
+        orderListText.text = $"{orderList}";
     }
     
     public void CupSizeSelected(int size)
