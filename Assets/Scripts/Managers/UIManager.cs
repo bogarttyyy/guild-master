@@ -15,6 +15,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text pourValueText;
     [SerializeField] private TMP_Text waterValueText;
     [SerializeField] private TMP_Text funnelValueText;
+    [SerializeField] private TMP_Text cupSizeText;
+    [SerializeField] private TMP_Text icedText;
+    [SerializeField] private TMP_Text drinkText;
 
     [SerializeField] private Button sCupBtn;
     [SerializeField] private Button mCupBtn;
@@ -66,6 +69,21 @@ public class UIManager : MonoBehaviour
     public void UpdateOrderListText(string orderList)
     {
         orderListText.text = $"{orderList}";
+    }
+
+    public void UpdateCupSizeText(string cupSize)
+    {
+        cupSizeText.text = $"Cup: {cupSize}";
+    }
+
+    public void UpdateIcedText(string iced)
+    {
+        icedText.text = $"Iced?: {iced}";
+    }
+
+    public void UpdateDrinkText(string value)
+    {
+        drinkText.text = $"Drink: {value}";
     }
     
     public void CupSizeSelected(int size)
