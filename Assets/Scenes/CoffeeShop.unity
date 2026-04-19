@@ -4055,6 +4055,7 @@ MonoBehaviour:
   UpdateCupSizeText: {fileID: 11400000, guid: 737d8185ef0b6492a85b37ceda58f8e5, type: 2}
   UpdateIcedText: {fileID: 11400000, guid: 9b7ea812bf2b144da8fee7e72684c0dc, type: 2}
   UpdateDrinkType: {fileID: 11400000, guid: 11431573f642543b19ccab9358f15dae, type: 2}
+  ServeOrder: {fileID: 11400000, guid: 83477efe5bc9f48d78f4752bc5453046, type: 2}
 --- !u!4 &1300207213
 Transform:
   m_ObjectHideFlags: 0
@@ -5821,6 +5822,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2006803503}
   - component: {fileID: 2006803502}
+  - component: {fileID: 2006803504}
   m_Layer: 0
   m_Name: OrderManager
   m_TagString: Untagged
@@ -5859,6 +5861,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2006803504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006803501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f49a0cec77a4ebaac8db6b8445a3923, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Events.EventChannelSystem.OrderEventListener
+  eventChannel: {fileID: 11400000, guid: 83477efe5bc9f48d78f4752bc5453046, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2006803502}
+        m_TargetAssemblyTypeName: OrderManager, Assembly-CSharp
+        m_MethodName: FulfillOrder
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2030396452
 GameObject:
   m_ObjectHideFlags: 0

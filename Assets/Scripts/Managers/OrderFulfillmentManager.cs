@@ -14,6 +14,7 @@ public class OrderFulfillmentManager : MonoBehaviour
     [SerializeField] private EventChannel<string> UpdateCupSizeText;
     [SerializeField] private EventChannel<string> UpdateIcedText;
     [SerializeField] private EventChannel<string> UpdateDrinkType;
+    [SerializeField] private EventChannel<Order> ServeOrder;
     
     private void Start()
     {
@@ -48,6 +49,7 @@ public class OrderFulfillmentManager : MonoBehaviour
 
     public void Serve()
     {
+        ServeOrder.Invoke(currentOrder);
         ResetOrder();
     }
     

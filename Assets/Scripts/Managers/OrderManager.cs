@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Enums;
 using Models;
 using NSBLib.EventChannelSystem;
@@ -80,5 +81,18 @@ public class OrderManager : MonoBehaviour
     {
         orders.Add(newOrder);
         PrintOrders();
+    }
+
+    public void FulfillOrder(Order newOrder)
+    {
+        var foundOrder = orders.FirstOrDefault(x => x.drinkType == newOrder.drinkType &&
+                          x.isIced == newOrder.isIced &&
+                          x.cupSize == newOrder.cupSize);
+
+        if (foundOrder != null)
+        {
+            orders.Remove(foundOrder);
+            PrintOrders();
+        }
     }
 }
