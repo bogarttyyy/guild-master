@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text cupSizeText;
     [SerializeField] private TMP_Text icedText;
     [SerializeField] private TMP_Text drinkText;
+    [SerializeField] private TMP_Text customerCountText;
 
     [SerializeField] private Button sCupBtn;
     [SerializeField] private Button mCupBtn;
@@ -87,6 +88,11 @@ public class UIManager : MonoBehaviour
     public void UpdateDrinkText(string value)
     {
         drinkText.text = $"Drink: {value}";
+    }
+
+    public void UpdateCustomerCountText(int customerCount)
+    {
+        customerCountText.text = $"Customers: {customerCount}";
     }
     
     public void CupSizeSelected(int size)
