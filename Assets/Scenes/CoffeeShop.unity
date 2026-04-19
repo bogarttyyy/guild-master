@@ -762,6 +762,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1250139259}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: DrinkSelected
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &145245846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2086,6 +2098,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1300207212}
         m_TargetAssemblyTypeName: OrderFulfillmentManager, Assembly-CSharp
         m_MethodName: Serve
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1250139259}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ResetUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3557,6 +3581,8 @@ MonoBehaviour:
   sCupBtn: {fileID: 486825734}
   mCupBtn: {fileID: 2097260955}
   lCupBtn: {fileID: 1544222684}
+  coffeeBtn: {fileID: 1885515293}
+  teaBtn: {fileID: 145245845}
   beanBtn: {fileID: 2046603911}
   grindBtn: {fileID: 2092685192}
 --- !u!114 &1250139260
@@ -5598,6 +5624,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1250139259}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: DrinkSelected
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1885515294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6125,6 +6163,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1300207212}
         m_TargetAssemblyTypeName: OrderFulfillmentManager, Assembly-CSharp
         m_MethodName: Trash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1250139259}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ResetUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

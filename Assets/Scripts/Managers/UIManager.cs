@@ -1,6 +1,7 @@
 using Enums;
 using NSBLib.Helpers;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button mCupBtn;
     [SerializeField] private Button lCupBtn;
 
+    [SerializeField] private Button coffeeBtn;
+    [SerializeField] private Button teaBtn;
     [SerializeField] private Button beanBtn;
     [SerializeField] private Button grindBtn;
 
@@ -111,6 +114,23 @@ public class UIManager : MonoBehaviour
         NSBLogger.Log($"Cup Size Selected: {(ECupSize)size}");
     }
 
+    public void DrinkSelected(int size)
+    {
+        switch ((EDrinkType)size)
+        {
+            case EDrinkType.Coffee:
+                teaBtn.interactable = false;
+                break;
+            case EDrinkType.Tea:
+                coffeeBtn.interactable = false;
+                break;
+            default:
+                coffeeBtn.interactable = true;
+                teaBtn.interactable = true;
+                break;
+        }
+    }
+
     public void DisableButton(string btnId)
     {
         switch (btnId)
@@ -132,5 +152,7 @@ public class UIManager : MonoBehaviour
         sCupBtn.interactable = true;
         mCupBtn.interactable = true;
         lCupBtn.interactable = true;
+        coffeeBtn.interactable = true;
+        teaBtn.interactable = true;
     }
 }

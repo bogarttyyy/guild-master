@@ -24,7 +24,7 @@ public class OrderFulfillmentManager : MonoBehaviour
     {
         currentOrder = new Order();
         UpdateCupSizeText.Invoke("");
-        UpdateIcedText.Invoke("");
+        UpdateIcedText.Invoke("False");
         UpdateDrinkType.Invoke("");
     }
     
