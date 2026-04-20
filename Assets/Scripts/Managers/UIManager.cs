@@ -147,10 +147,9 @@ public class UIManager : MonoBehaviour
             case "grindBtn":
                 grindBtn.interactable = false;
                 break;
-            
         }
     }
-
+    
     public void ResetUI()
     {
         UpdateOrderText("");

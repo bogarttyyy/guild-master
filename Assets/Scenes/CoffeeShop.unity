@@ -6099,6 +6099,7 @@ GameObject:
   - component: {fileID: 2030396453}
   - component: {fileID: 2030396455}
   - component: {fileID: 2030396456}
+  - component: {fileID: 2030396457}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -6124,6 +6125,7 @@ MonoBehaviour:
   updateCashText: {fileID: 11400000, guid: 63288de6566aaac45a61a744c79de1ed, type: 2}
   UpdateCustomerCount: {fileID: 11400000, guid: 982e832ea68594eda8c43745301e9648, type: 2}
   takeOrder: {fileID: 11400000, guid: ed151383048b14b2e9c8bccbdae3475c, type: 2}
+  updateCustomerInterval: {fileID: 11400000, guid: 2032e2172270d416b82cfb9d344f696d, type: 2}
 --- !u!4 &2030396454
 Transform:
   m_ObjectHideFlags: 0
@@ -6173,6 +6175,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2030396453}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: UpdateCustomerInterval
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 10
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2030396456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6192,6 +6206,34 @@ MonoBehaviour:
       - m_Target: {fileID: 2030396453}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: OrderServed
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &2030396457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030396452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5623a69037804ccb869932f1e18766b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NSBLib.EventChannelSystem.FloatEventListener
+  eventChannel: {fileID: 11400000, guid: 2032e2172270d416b82cfb9d344f696d, type: 2}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2030396455}
+        m_TargetAssemblyTypeName: NSBLib.Components.TimeTicker, Assembly-CSharp
+        m_MethodName: SetDuration
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

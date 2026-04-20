@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private EventChannel<int> updateCashText;
     [SerializeField] private EventChannel<int> UpdateCustomerCount;
     [SerializeField] private EventChannel takeOrder;
+    [SerializeField] private EventChannel<float> updateCustomerInterval;
     
     private void Start()
     {
@@ -52,5 +53,10 @@ public class GameManager : MonoBehaviour
     public void OrderServed(bool success)
     {
         AddCash(success ? 10 : -10);
+    }
+
+    public void UpdateCustomerInterval()
+    {
+        updateCustomerInterval.Invoke(Random.Range(2f, 5f));
     }
 }
