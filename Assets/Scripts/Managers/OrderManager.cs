@@ -19,6 +19,7 @@ public class OrderManager : MonoBehaviour
     [Header("Events")]
     [SerializeField] private EventChannel<string> UpdateOrderText;
     [SerializeField] private EventChannel<string> UpdateOrderListText;
+    [SerializeField] private EventChannel<bool> OrderServed;
     
     private void Start()
     {
@@ -93,6 +94,11 @@ public class OrderManager : MonoBehaviour
         {
             orders.Remove(foundOrder);
             PrintOrders();
+            OrderServed.Invoke(true);
+        }
+        else
+        {
+            OrderServed.Invoke(false);
         }
     }
 }

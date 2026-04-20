@@ -48,4 +48,9 @@ public class GameManager : MonoBehaviour
             takeOrder.Invoke(new Empty());
         }
     }
+
+    public void OrderServed(bool success)
+    {
+        AddCash(success ? 10 : -10);
+    }
 }
